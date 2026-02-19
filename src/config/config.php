@@ -7,14 +7,15 @@ return [
         'base_url' => '/parfum-webshop/public',
     ],
 
-    'db' => [
-        'host' => '127.0.0.1',
-        'port' => 3307, // als jouw MySQL op 3307 draait
-        'database' => 'parfum_webshop',
-        'username' => 'root',
-        'password' => '',
-        'charset' => 'utf8mb4',
-    ],
+'db' => [
+  'host' => '127.0.0.1',
+  'port' => 3307,          // of 3306 als je die gebruikt
+  'name' => 'parfum_webshop',
+  'user' => 'root',
+  'pass' => '',
+  'charset' => 'utf8mb4',
+],
+
 
     // Admin account (FE11/FE12)
     'admin' => [
