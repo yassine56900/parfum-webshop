@@ -6,6 +6,8 @@
 </head>
 <body>
   <h1>Winkelmandje</h1>
+  <p><strong>Aantal verschillende producten:</strong> <?= count($lines) ?></p>
+
 
   <?php if (empty($lines)): ?>
     <p>Je winkelmandje is leeg.</p>
