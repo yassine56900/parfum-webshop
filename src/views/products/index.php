@@ -25,5 +25,9 @@
   <p>
     <a href="<?= htmlspecialchars(base_url('/')) ?>">Terug</a>
   </p>
+  <p>
+  <a href="<?= htmlspecialchars(base_url('/?r=cart')) ?>">Winkelmandje bekijken</a>
+</p>
+
 </body>
 </html>
