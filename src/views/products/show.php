@@ -14,7 +14,9 @@
   </p>
 
   <form method="post" action="<?= htmlspecialchars(base_url('/?r=cart/add')) ?>">
+    <input type="hidden" name="_token" value="<?= htmlspecialchars(Csrf::token()) ?>">
     <input type="hidden" name="id" value="<?= (int)$product['product_id'] ?>">
+
     <label>
       Aantal:
       <input type="number" name="qty" value="1" min="1">

@@ -6,8 +6,8 @@
 </head>
 <body>
   <h1>Winkelmandje</h1>
-  <p><strong>Aantal verschillende producten:</strong> <?= count($lines) ?></p>
 
+  <p><strong>Aantal verschillende producten:</strong> <?= count($lines) ?></p>
 
   <?php if (empty($lines)): ?>
     <p>Je winkelmandje is leeg.</p>
@@ -27,16 +27,21 @@
           <tr>
             <td><?= htmlspecialchars($l['naam']) ?></td>
             <td>€<?= number_format((float)$l['prijs'], 2) ?></td>
+
             <td>
-  <form method="post" action="<?= htmlspecialchars(base_url('/?r=cart/update')) ?>">
-    <input type="hidden" name="id" value="<?= (int)$l['product_id'] ?>">
-    <input type="number" name="qty" value="<?= (int)$l['qty'] ?>" min="0">
-    <button type="submit">Update</button>
-  </form>
-</td>
+              <form method="post" action="<?= htmlspecialchars(base_url('/?r=cart/update')) ?>">
+                <input type="hidden" name="_token" value="<?= htmlspecialchars(Csrf::token()) ?>">
+                <input type="hidden" name="id" value="<?= (int)$l['product_id'] ?>">
+                <input type="number" name="qty" value="<?= (int)$l['qty'] ?>" min="0">
+                <button type="submit">Update</button>
+              </form>
+            </td>
+
             <td>€<?= number_format((float)$l['line_total'], 2) ?></td>
+
             <td>
               <form method="post" action="<?= htmlspecialchars(base_url('/?r=cart/remove')) ?>">
+                <input type="hidden" name="_token" value="<?= htmlspecialchars(Csrf::token()) ?>">
                 <input type="hidden" name="id" value="<?= (int)$l['product_id'] ?>">
                 <button type="submit">Verwijderen</button>
               </form>
@@ -49,6 +54,7 @@
     <p><strong>Totaal:</strong> €<?= number_format((float)$total, 2) ?></p>
 
     <form method="post" action="<?= htmlspecialchars(base_url('/?r=cart/clear')) ?>">
+      <input type="hidden" name="_token" value="<?= htmlspecialchars(Csrf::token()) ?>">
       <button type="submit">Leeg winkelmandje</button>
     </form>
   <?php endif; ?>
