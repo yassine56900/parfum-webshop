@@ -27,7 +27,13 @@
           <tr>
             <td><?= htmlspecialchars($l['naam']) ?></td>
             <td>€<?= number_format((float)$l['prijs'], 2) ?></td>
-            <td><?= (int)$l['qty'] ?></td>
+            <td>
+  <form method="post" action="<?= htmlspecialchars(base_url('/?r=cart/update')) ?>">
+    <input type="hidden" name="id" value="<?= (int)$l['product_id'] ?>">
+    <input type="number" name="qty" value="<?= (int)$l['qty'] ?>" min="0">
+    <button type="submit">Update</button>
+  </form>
+</td>
             <td>€<?= number_format((float)$l['line_total'], 2) ?></td>
             <td>
               <form method="post" action="<?= htmlspecialchars(base_url('/?r=cart/remove')) ?>">

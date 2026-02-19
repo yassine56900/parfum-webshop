@@ -110,6 +110,22 @@ $router->post('/cart/add', function () {
     header('Location: ' . base_url('/?r=cart'));
     exit;
 });
+/* UPDATE QUANTITY */
+$router->post('/cart/update', function () {
+    $id = filter_var($_POST['id'] ?? null, FILTER_VALIDATE_INT);
+    $qty = filter_var($_POST['qty'] ?? null, FILTER_VALIDATE_INT);
+
+    if (!$id || $id < 1 || $qty === false) {
+        http_response_code(400);
+        exit("Ongeldige invoer.");
+    }
+
+    $cart = new CartService();
+    $cart->update((int)$id, (int)$qty);
+
+    header('Location: ' . base_url('/?r=cart'));
+    exit;
+});
 
 /* REMOVE */
 $router->post('/cart/remove', function () {
